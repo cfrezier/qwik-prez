@@ -28,7 +28,7 @@ export default component$(() => {
         actual: 0,
         elapsed: 0,
         playing: false,
-        bc : undefined,
+        bc: undefined,
         interval: undefined
     } as PrezControls);
 
@@ -37,6 +37,21 @@ export default component$(() => {
 
     useClientEffect$(() => {
         controls.bc = noSerialize(new BroadcastChannel('prez'));
+
+        if (controls.bc) {
+            controls.bc.onmessage = (msg) => {
+                switch (msg.data.type) {
+                    case 'actual':
+                        // @ts-ignore
+                        controls.actual = msg.data.value;
+                        break;
+                    case 'elapsed':
+                        // @ts-ignore
+                        controls.elapsed = msg.data.value;
+                        break;
+                }
+            }
+        }
     }, {eagerness: 'load'});
 
     useOnDocument('keyup', $((_event) => {
@@ -63,7 +78,7 @@ export default component$(() => {
                 break;
             case 'KeyP':
                 controls.playing = !controls.playing;
-                if(controls.playing) {
+                if (controls.playing) {
                     const tmp = setInterval(() => {
                         controls.elapsed++;
                         controls.bc?.postMessage({type: 'elapsed', value: controls.elapsed});
