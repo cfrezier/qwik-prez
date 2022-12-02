@@ -49,6 +49,13 @@ export default component$(() => {
                         // @ts-ignore
                         controls.elapsed = msg.data.value;
                         break;
+                    case 'playing':
+                        // @ts-ignore
+                        controls.playing = msg.data.value;
+                        if(!controls.playing) {
+                            controls.interval && controls.interval();
+                        }
+                        break;
                 }
             }
         }
@@ -84,8 +91,10 @@ export default component$(() => {
                         controls.bc?.postMessage({type: 'elapsed', value: controls.elapsed});
                     }, 1000);
                     controls.interval = noSerialize(() => clearInterval(tmp));
+                    controls.bc?.postMessage({type: 'playing', value: true});
                 } else {
                     controls.interval && controls.interval();
+                    controls.bc?.postMessage({type: 'playing', value: false});
                 }
                 break;
         }
