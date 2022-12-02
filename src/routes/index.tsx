@@ -25,6 +25,7 @@ export default component$(() => {
                             {presentations.map((presentation) =>
                                 <li>
                                     <Link href={'./' + presentation + '/'}>{presentation}</Link>
+                                    <Link href={'./' + presentation + '/notes'}>Notes</Link>
                                 </li>)
                             }
                         </ul>
