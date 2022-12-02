@@ -25,6 +25,7 @@ export default component$(() => {
                 </div>
             }
             <p>{controls.actual + 1} / {presentation.pages.length}</p>
+            <p>{controls.elapsed}s</p>
         </div>
     );
 });

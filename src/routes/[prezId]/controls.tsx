@@ -2,6 +2,7 @@ import {
     $,
     component$,
     createContext,
+    NoSerialize,
     noSerialize,
     Slot,
     useClientEffect$,
@@ -16,8 +17,8 @@ export interface PrezControls {
     actual: number;
     elapsed: number;
     playing: boolean;
-    bc?: BroadcastChannel;
-    interval?: NodeJS.Timer;
+    bc?: NoSerialize<BroadcastChannel>;
+    interval?: NoSerialize<() => void>;
 }
 
 export const PrezControlsContext = createContext<PrezControls>('prez-controls');
@@ -40,7 +41,8 @@ export default component$(() => {
 
     useOnDocument('keyup', $((_event) => {
         const event = _event as KeyboardEvent;
-        switch (event.key) {
+        console.log('key', event);
+        switch (event.code) {
             case 'KeyA':
             case 'KeyS':
             case 'ArrowLeft':
@@ -62,17 +64,18 @@ export default component$(() => {
             case 'KeyP':
                 controls.playing = !controls.playing;
                 if(controls.playing) {
-                    controls.interval = noSerialize(setInterval(() => {
+                    const tmp = setInterval(() => {
                         controls.elapsed++;
                         controls.bc?.postMessage({type: 'elapsed', value: controls.elapsed});
-                    }, 1000));
+                    }, 1000);
+                    controls.interval = noSerialize(() => clearInterval(tmp));
                 } else {
-                    clearInterval(controls.interval);
+                    controls.interval && controls.interval();
                 }
                 break;
         }
+        return controls.interval;
     }));
-
 
     useContextProvider(PrezControlsContext, controls);
 
