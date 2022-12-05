@@ -1,32 +1,29 @@
-import {component$, useContext} from "@builder.io/qwik";
-import {PrezControlsContext} from "~/components/controls/controls";
-import {PrezPageList, PrezPageText} from "~/routes/model.prez.interface";
-import {PrezPagesContext} from "~/components/data";
+import {component$} from "@builder.io/qwik";
+import {PrezPage, PrezPageList, PrezPageText} from "~/routes/model.prez.interface";
 
-export default component$(() => {
-
-    const presentation = useContext(PrezPagesContext);
-
-    const controls = useContext(PrezControlsContext);
-
-    const actualPage = presentation.pages[controls.actual];
+export default component$((props: { page: PrezPage }) => {
 
     return (
         <div>
-            <h1>{actualPage.title}</h1>
-            {!!actualPage &&
-                <div>
-                    {actualPage.type === 'list' &&
-                        <ul>
-                            {(actualPage as PrezPageList).items.map((item) => <li>{item}</li>)}
-                        </ul>
-                    }
-                    {actualPage.type === 'text' &&
-                        <div>
-                            {(actualPage as PrezPageText).text.map((item) => <p>{item}</p>)}
-                        </div>
-                    }
-                </div>
+            {!!props.page &&
+                <>
+                    <h1>{props.page.title}</h1>
+                    <div>
+                        {props.page.type === 'list' &&
+                            <ul>
+                                {(props.page as PrezPageList).items.map((item) => <li>{item}</li>)}
+                            </ul>
+                        }
+                        {props.page.type === 'text' &&
+                            <div>
+                                {(props.page as PrezPageText).text.map((item) => <p>{item}</p>)}
+                            </div>
+                        }
+                    </div>
+                </>
+            }
+            {!props.page &&
+                <h1>No next page</h1>
             }
         </div>
     );

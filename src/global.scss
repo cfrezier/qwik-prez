@@ -34,6 +34,11 @@ body, .body {
 
   main {
     flex: 1 1;
+    width: 100%;
+
+    section {
+      height: 100%;
+    }
   }
 
   * {

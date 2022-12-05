@@ -4,7 +4,6 @@ import {PrezPresentatorContext} from "~/routes/presentator";
 import {PrezControlsContext} from "~/components/controls/controls";
 import {PrezPagesContext} from "~/components/data";
 import styles from "./footer.scss?inline";
-import {useLocation} from "@builder.io/qwik-city";
 import Clock from "~/components/clock/clock";
 
 export default component$(() => {
@@ -13,8 +12,6 @@ export default component$(() => {
     const presentator = useContext<PrezPresentator>(PrezPresentatorContext);
     const controls = useContext(PrezControlsContext);
     const presentation = useContext(PrezPagesContext);
-
-    const isNotes = useLocation().href.indexOf('notes') >= 0;
 
     return (
         <footer>

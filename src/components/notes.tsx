@@ -10,7 +10,7 @@ export default component$(() => {
 
     return (
         <div>
-            <h1>{actualPage.title}</h1>
+            <h1>Notes</h1>
             { !actualPage.notes &&
                 <p>Pas de notes</p>
             }
