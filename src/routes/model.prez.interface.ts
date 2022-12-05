@@ -1,4 +1,4 @@
-export type PrezPage = PrezPageHead | PrezPageList | PrezPageText;
+export type PrezPage = PrezPageHead | PrezPageList | PrezPageText | PrezPageCode;
 
 export interface PrezBasicPage {
     duration: number,
@@ -15,9 +15,13 @@ export interface PrezPageList extends PrezBasicPage {
     items: string[];
 }
 
-
 export interface PrezPageText extends PrezBasicPage {
     text: string[];
+}
+
+export interface PrezPageCode extends PrezBasicPage {
+    code: string[];
+    lang: string;
 }
 
 export interface PrezPresentator {

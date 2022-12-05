@@ -1,5 +1,5 @@
-import {component$} from "@builder.io/qwik";
-import {PrezPage, PrezPageList, PrezPageText} from "~/routes/model.prez.interface";
+import {component$, useClientEffect$} from "@builder.io/qwik";
+import {PrezPage, PrezPageCode, PrezPageList, PrezPageText} from "~/routes/model.prez.interface";
 
 export default component$((props: { page: PrezPage }) => {
 
@@ -18,6 +18,13 @@ export default component$((props: { page: PrezPage }) => {
                             <div>
                                 {(props.page as PrezPageText).text.map((item) => <p>{item}</p>)}
                             </div>
+                        }
+                        {props.page.type === 'code' &&
+                            <pre>
+                                <code className={`langage-${(props.page as PrezPageCode).lang}`}>
+                                    {(props.page as PrezPageCode).code.map((item) => <p>{item}</p>)}
+                                </code>
+                            </pre>
                         }
                     </div>
                 </>
