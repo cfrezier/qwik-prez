@@ -2,10 +2,10 @@
   height: 100%;
   display: grid;
   grid-template-areas:
-            "note note current"
-            "note note next"
-            "tempo tempo tempo";
-  grid-gap: 5px;
+            "note current"
+            "note next"
+            "tempo tempo";
+  grid-gap: 10px;
 
   .sub-note {
     grid-area: note;
