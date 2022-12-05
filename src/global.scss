@@ -9,10 +9,18 @@
 :root {
   --color-background: #000000;
   --color-writing: #ffffff;
+  --color-primary: #006ce9;
+  --color-secondary: #18b6f6;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
 }
 
 body {
   background-color: var(--color-background);
+  color: var(--color-writing);
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   display: flex;
   flex-direction: column;
@@ -22,4 +30,12 @@ body {
   main {
     flex: 1 1;
   }
+}
+
+a.btn {
+  text-decoration: none;
+  padding: 4px 2px;
+  margin: 4px 2px;
+  background-color: var(--color-primary);
+  border-radius: 4px;
 }

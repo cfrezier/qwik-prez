@@ -47,7 +47,7 @@ export default component$(() => {
                     onResolved={(presentator) => {
                         return (
                             <a href={'https://twitter.com/' + presentator.author} target="_blank">
-                                Made with ♡ by {presentator.author}
+                                {presentator.author}
                             </a>
                         );
                     }}

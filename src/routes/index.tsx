@@ -1,6 +1,6 @@
 import {component$, Resource} from '@builder.io/qwik';
 import type {DocumentHead, RequestHandler} from '@builder.io/qwik-city';
-import {Link, useEndpoint} from '@builder.io/qwik-city';
+import {useEndpoint} from '@builder.io/qwik-city';
 import fs from 'fs';
 
 export const onGet: RequestHandler<string[]> = async () => {
@@ -13,7 +13,7 @@ export default component$(() => {
     return (
         <div>
             <h1>
-                Welcome to Qwik Presentation <span class="lightning">⚡️</span>
+                Prez listing
             </h1>
             <Resource
                 value={presentationsList}
@@ -24,8 +24,8 @@ export default component$(() => {
                         <ul>
                             {presentations.map((presentation) =>
                                 <li>
-                                    <Link href={'./' + presentation + '/'}>{presentation}</Link>
-                                    <Link href={'./' + presentation + '/notes'}>Notes</Link>
+                                    <a href={'./' + presentation + '/'} className={'btn'}>{presentation}</a>
+                                    <a href={'./' + presentation + '/notes'} className={'btn'} target={'_blank'}>Notes</a>
                                 </li>)
                             }
                         </ul>
@@ -37,7 +37,7 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-    title: 'Welcome to Qwik Presentation',
+    title: 'Prez - listing',
     meta: [
         {
             name: 'description',
