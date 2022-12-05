@@ -1,4 +1,6 @@
 .main-note {
+  font-size: 14px;
+
   height: 100%;
   display: grid;
   grid-template-areas:
@@ -6,6 +8,8 @@
             "note next"
             "tempo tempo";
   grid-gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
 
   .sub-note {
     grid-area: note;
@@ -13,6 +17,8 @@
 
   .sub-current {
     grid-area: current;
+    overflow: scroll;
+    max-height: 250px;
 
     .current {
       border: 1px solid var(--color-primary);
@@ -21,7 +27,8 @@
 
   .sub-next {
     grid-area: next;
-    padding: 50px;
+    overflow: scroll;
+    max-height: 200px;
 
     .next {
       border: 1px solid var(--color-secondary);

@@ -19,53 +19,49 @@ export default component$((props: { page: PrezPage }) => {
         }, 100);
     }, {eagerness: 'load'});
 
-    const pageStyle = {} as any;
+    if (!props.page) {
+        return <h1>No next page</h1>
+    }
 
-    if(props.page.background) {
+    const pageStyle = {} as any;
+    if (props.page.background) {
         pageStyle.backgroundImage = `url(${props.page.background})`;
     }
-    if(props.page.color) {
+    if (props.page.color) {
         pageStyle.color = `${props.page.color}`;
     }
 
     return (
         <div style={pageStyle} class={'prez'}>
-            {!!props.page &&
-                <>
-                    <h1 className={props.page.type ==='head' ? 'big-head' : ''}>{props.page.title}</h1>
+            <h1 className={props.page.type === 'head' ? 'big-head' : ''}>{props.page.title}</h1>
+            <div className={'prez-text'}>
+                {props.page.type === 'list' &&
+                    <ul>
+                        {(props.page as PrezPageList).items.map((item) => <li>{item}</li>)}
+                    </ul>
+                }
+                {props.page.type === 'text' &&
                     <div>
-                        {props.page.type === 'list' &&
-                            <ul>
-                                {(props.page as PrezPageList).items.map((item) => <li>{item}</li>)}
-                            </ul>
-                        }
-                        {props.page.type === 'text' &&
-                            <div>
-                                {(props.page as PrezPageText).text.map((item) => <p>{item}</p>)}
-                            </div>
-                        }
-                        {props.page.type === 'code' &&
-                            <pre>
+                        {(props.page as PrezPageText).text.map((item) => <p>{item}</p>)}
+                    </div>
+                }
+                {props.page.type === 'code' &&
+                    <pre>
                                 <code className={`hljs language-${(props.page as PrezPageCode).lang}`}>
                                     {(props.page as PrezPageCode).code.join('\n')
                                         .replace(/</g, '&lt;')
                                         .replace(/>/g, '&gt;')}
                                 </code>
                             </pre>
-                        }
-                        {props.page.type === 'meta' &&
-                            <>
-                                {(props.page as PrezPageMeta).pages.map(page =>
-                                    <Presentation page={page}/>
-                                )}
-                            </>
-                        }
-                    </div>
-                </>
-            }
-            {!props.page &&
-                <h1>No next page</h1>
-            }
+                }
+                {props.page.type === 'meta' &&
+                    <>
+                        {(props.page as PrezPageMeta).pages.map(page =>
+                            <Presentation page={page}/>
+                        )}
+                    </>
+                }
+            </div>
         </div>
     );
 });
