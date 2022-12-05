@@ -47,10 +47,14 @@ body, .body {
   }
 }
 
-a.btn {
+a {
   text-decoration: none;
-  padding: 4px 2px;
-  margin: 4px 2px;
-  background-color: var(--color-primary);
-  border-radius: 4px;
+  color: var(--color-writing);
+
+  &.btn {
+    padding: 4px 2px;
+    margin: 4px 2px;
+    background-color: var(--color-primary);
+    border-radius: 4px;
+  }
 }

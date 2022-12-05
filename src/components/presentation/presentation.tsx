@@ -19,8 +19,15 @@ export default component$((props: { page: PrezPage }) => {
         }, 100);
     }, {eagerness: 'load'});
 
+    const styleForBackground = {
+        backgroundImage: `url(${props.page.background})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        height: '99%'
+    }
+
     return (
-        <div>
+        <div style={styleForBackground}>
             {!!props.page &&
                 <>
                     <h1>{props.page.title}</h1>

@@ -3,12 +3,14 @@
     {
       "duration": 10,
       "type": "head",
-      "title": "My presentation"
+      "title": "My presentation",
+      "background": "/images/1.jpeg"
     },
     {
       "duration": 20,
       "type": "list",
       "title": "My first list",
+      "background": "/images/2.jpeg",
       "items": [
         "First item",
         "Second item",
@@ -23,6 +25,7 @@
       "duration": 30,
       "type": "text",
       "title": "My first text",
+      "background": "/images/1.jpeg",
       "text": [
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
         "can be on multiple lines"
@@ -37,6 +40,7 @@
       "duration": 5,
       "type": "code",
       "title": "A little bit of code",
+      "background": "/images/2.jpeg",
       "lang": "typescript",
       "code": [
         "controls.bc = noSerialize(new BroadcastChannel('prez'));",
@@ -52,6 +56,7 @@
       "duration": 5,
       "type": "meta",
       "title": "A meta page",
+      "background": "/images/1.jpeg",
       "pages":[
         {
           "type": "text",

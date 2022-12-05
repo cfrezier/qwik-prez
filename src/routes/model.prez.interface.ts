@@ -4,6 +4,7 @@ export interface PrezBasicPage {
     duration: number,
     type: string;
     title?: string;
+    background?: string;
     notes?: string[];
 }
 
