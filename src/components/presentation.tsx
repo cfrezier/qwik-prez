@@ -1,5 +1,5 @@
 import {component$, useContext} from "@builder.io/qwik";
-import {PrezControlsContext} from "~/components/controls";
+import {PrezControlsContext} from "~/components/controls/controls";
 import {PrezPageList, PrezPageText} from "~/routes/model.prez.interface";
 import {PrezPagesContext} from "~/components/data";
 
@@ -28,8 +28,6 @@ export default component$(() => {
                     }
                 </div>
             }
-            <p>{controls.actual + 1} / {presentation.pages.length}</p>
-            <p>{controls.elapsed}s</p>
         </div>
     );
 });

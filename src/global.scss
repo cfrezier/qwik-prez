@@ -18,7 +18,11 @@ html, body {
   margin: 0;
 }
 
-body {
+* {
+  box-sizing: border-box;
+}
+
+body, .body {
   background-color: var(--color-background);
   color: var(--color-writing);
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -27,8 +31,13 @@ body {
   justify-content: space-between;
   align-items: center;
 
+
   main {
     flex: 1 1;
+  }
+
+  * {
+    padding: 0 10px;
   }
 }
 

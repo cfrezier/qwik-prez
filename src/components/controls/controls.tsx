@@ -9,9 +9,11 @@ import {
     useContext,
     useContextProvider,
     useOnDocument,
-    useStore
+    useStore,
+    useStylesScoped$
 } from "@builder.io/qwik";
 import {PrezPagesContext} from "~/components/data";
+import styles from "./controls.scss?inline";
 
 export interface PrezControls {
     actual: number;
@@ -24,7 +26,9 @@ export interface PrezControls {
 export const PrezControlsContext = createContext<PrezControls>('prez-controls');
 
 export default component$(() => {
-    const controls = useStore({
+    useStylesScoped$(styles);
+
+    const controls = useStore<PrezControls>({
         actual: 0,
         elapsed: 0,
         playing: false,
@@ -104,7 +108,7 @@ export default component$(() => {
 
     // div needed in order for events keyup to be detected
     return (
-        <div>
+        <div class={'body'}>
             <Slot></Slot>
         </div>
     );

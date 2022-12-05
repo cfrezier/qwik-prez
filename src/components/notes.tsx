@@ -1,5 +1,5 @@
 import {component$, useContext} from "@builder.io/qwik";
-import {PrezControlsContext} from "~/components/controls";
+import {PrezControlsContext} from "~/components/controls/controls";
 import {PrezPagesContext} from "~/components/data";
 
 export default component$(() => {
@@ -17,8 +17,6 @@ export default component$(() => {
             <ul>
             { actualPage.notes?.map((item) => <li>{item}</li>)}
             </ul>
-            <p>{controls.actual + 1} / {presentation.pages.length}</p>
-            <p>{controls.elapsed}s</p>
         </div>
     );
 });
