@@ -37,15 +37,15 @@
       "duration": 5,
       "type": "code",
       "title": "A little bit of code",
-      "lang": "javascript",
+      "lang": "typescript",
       "code": [
         "controls.bc = noSerialize(new BroadcastChannel('prez'));",
-        "      if (controls.bc) {",
-        "            controls.bc.onmessage = (msg) => {",
-        "                  switch (msg.data.type) {",
-        "                        case 'actual':",
-        "                           controls.actual = msg.data.value;",
-        "                           break;"
+        "if (controls.bc) {",
+        "    controls.bc.onmessage = (msg) => {",
+        "        switch (msg.data.type) {",
+        "            case 'actual':",
+        "                controls.actual = msg.data.value;",
+        "                break;"
       ]
     }
   ]

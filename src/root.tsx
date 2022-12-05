@@ -3,6 +3,7 @@ import {QwikCityProvider, RouterOutlet, ServiceWorkerRegister} from '@builder.io
 import {RouterHead} from './components/router-head/router-head';
 
 import globalStyles from './global.scss?inline';
+import {QwikPartytown} from "~/components/partytown/partytown";
 
 export default component$(() => {
   /**
@@ -14,12 +15,19 @@ export default component$(() => {
   useStyles$(globalStyles);
 
 
-    return (
+  return (
     <QwikCityProvider>
       <head>
         <meta charSet="utf-8" />
         <link rel="manifest" href="/manifest.json" />
         <RouterHead />
+        <QwikPartytown debug={true} forward={['hljs']}/>
+        <script
+            async
+            type="text/partytown"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"
+        />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css"></link>
       </head>
       <body lang="en">
         <RouterOutlet />
