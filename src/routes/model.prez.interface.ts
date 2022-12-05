@@ -5,6 +5,7 @@ export interface PrezBasicPage {
     type: string;
     title?: string;
     background?: string;
+    color?: string;
     notes?: string[];
 }
 

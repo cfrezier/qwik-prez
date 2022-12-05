@@ -1,15 +1,13 @@
-.animated {
-  position: relative;
-  animation: animatetop 1s
+.big-head {
+  font-size: 70px;
 }
 
-@keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0
-  }
-  to {
-    top: 0;
-    opacity: 1
-  }
+.prez {
+  flex: 1 1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

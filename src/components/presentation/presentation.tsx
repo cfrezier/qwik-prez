@@ -19,18 +19,20 @@ export default component$((props: { page: PrezPage }) => {
         }, 100);
     }, {eagerness: 'load'});
 
-    const styleForBackground = {
-        backgroundImage: `url(${props.page.background})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        height: '99%'
+    const pageStyle = {} as any;
+
+    if(props.page.background) {
+        pageStyle.backgroundImage = `url(${props.page.background})`;
+    }
+    if(props.page.color) {
+        pageStyle.color = `${props.page.color}`;
     }
 
     return (
-        <div style={styleForBackground}>
+        <div style={pageStyle} class={'prez'}>
             {!!props.page &&
                 <>
-                    <h1>{props.page.title}</h1>
+                    <h1 className={props.page.type ==='head' ? 'big-head' : ''}>{props.page.title}</h1>
                     <div>
                         {props.page.type === 'list' &&
                             <ul>

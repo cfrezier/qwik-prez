@@ -4,7 +4,8 @@
       "duration": 10,
       "type": "head",
       "title": "My presentation",
-      "background": "/images/1.jpeg"
+      "background": "/images/1.jpeg",
+      "color": "#006ce9"
     },
     {
       "duration": 20,

@@ -71,7 +71,7 @@ export default component$(() => {
             case 'KeyA':
             case 'KeyS':
             case 'ArrowLeft':
-            case 'ArrowDown':
+            case 'ArrowUp':
                 if (controls.actual > 0) {
                     controls.actual--;
                     controls.bc?.postMessage({type: 'actual', value: controls.actual});
@@ -80,7 +80,7 @@ export default component$(() => {
             case 'KeyD':
             case 'KeyW':
             case 'ArrowRight':
-            case 'ArrowUp':
+            case 'ArrowDown':
                 if (controls.actual < pages.pages.length - 1) {
                     controls.actual++;
                     controls.bc?.postMessage({type: 'actual', value: controls.actual});
