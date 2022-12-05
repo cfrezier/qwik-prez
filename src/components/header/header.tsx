@@ -1,5 +1,5 @@
 import {component$, Resource, ResourceReturn, useContext, useStylesScoped$} from '@builder.io/qwik';
-import styles from './header.css?inline';
+import styles from './header.scss?inline';
 import {PrezPresentatorContext} from "~/routes/layout";
 import {PrezPresentator} from "~/routes/model.prez.interface";
 

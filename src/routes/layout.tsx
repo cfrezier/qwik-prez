@@ -33,8 +33,8 @@ export default component$(() => {
 
     return (
         <>
+            <Header/>
             <main>
-                <Header/>
                 <section>
                     <Slot/>
                 </section>

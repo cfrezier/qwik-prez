@@ -1,6 +1,6 @@
 import {component$, createContext, Resource, useContextProvider, useResource$, useStore} from "@builder.io/qwik";
 import {PrezPage} from "~/routes/model.prez.interface";
-import {useLocation} from "@builder.io/qwik-city";
+import {DocumentHead, useLocation} from "@builder.io/qwik-city";
 import {url} from "~/url.constant";
 import Controls from "~/routes/[prezId]/controls";
 import Notes from "~/routes/[prezId]/notes/notes";
@@ -55,3 +55,13 @@ export default component$(() => {
         </Controls>
     );
 });
+
+export const head: DocumentHead = {
+    title: 'Prez - Notes',
+    meta: [
+        {
+            name: 'description',
+            content: 'Qwik presentation list',
+        },
+    ],
+};
