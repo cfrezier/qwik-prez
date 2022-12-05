@@ -1,6 +1,6 @@
 import {component$, useContext} from "@builder.io/qwik";
 import {DocumentHead} from "@builder.io/qwik-city";
-import Presentation from "~/components/presentation";
+import Presentation from "~/components/presentation/presentation";
 import {PrezPagesContext} from "~/components/data";
 import {PrezControlsContext} from "~/components/controls/controls";
 

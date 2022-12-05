@@ -3,10 +3,12 @@ import hljs from "highlight.js";
 import {PrezPage, PrezPageCode, PrezPageList, PrezPageMeta, PrezPageText} from "~/routes/model.prez.interface";
 import {PrezControlsContext} from "~/components/controls/controls";
 import styles from "highlight.js/styles/github.css?inline";
-import Presentation from "~/components/presentation";
+import stylesPres from "./presentation.scss?inline";
+import Presentation from "~/components/presentation/presentation";
 
 export default component$((props: { page: PrezPage }) => {
     useStylesScoped$(styles);
+    useStylesScoped$(stylesPres);
 
     const controls = useContext(PrezControlsContext);
 

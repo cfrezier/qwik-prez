@@ -1,7 +1,7 @@
 import {component$, useContext, useStylesScoped$} from "@builder.io/qwik";
 import {DocumentHead} from "@builder.io/qwik-city";
 import Notes from "~/components/notes";
-import Presentation from "~/components/presentation";
+import Presentation from "~/components/presentation/presentation";
 import styles from "./notes.scss?inline";
 import {PrezPagesContext} from "~/components/data";
 import {PrezControlsContext} from "~/components/controls/controls";
