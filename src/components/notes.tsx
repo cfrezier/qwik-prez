@@ -1,13 +1,11 @@
 import {component$, useContext} from "@builder.io/qwik";
-import {PrezPagesContext} from "~/routes/[prezId]/index";
-import {PrezControlsContext} from "~/routes/[prezId]/controls";
+import {PrezControlsContext} from "~/components/controls";
+import {PrezPagesContext} from "~/components/data";
 
 export default component$(() => {
 
     const presentation = useContext(PrezPagesContext);
-
     const controls = useContext(PrezControlsContext);
-
     const actualPage = presentation.pages[controls.actual];
 
     return (

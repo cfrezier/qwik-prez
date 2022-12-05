@@ -1,7 +1,7 @@
 import {component$, useContext} from "@builder.io/qwik";
-import {PrezPagesContext} from "~/routes/[prezId]/index";
-import {PrezControlsContext} from "~/routes/[prezId]/controls";
+import {PrezControlsContext} from "~/components/controls";
 import {PrezPageList, PrezPageText} from "~/routes/model.prez.interface";
+import {PrezPagesContext} from "~/components/data";
 
 export default component$(() => {
 
@@ -14,14 +14,18 @@ export default component$(() => {
     return (
         <div>
             <h1>{actualPage.title}</h1>
-            { actualPage.type === 'list' &&
-                <ul>
-                { (actualPage as PrezPageList).items.map((item) => <li>{item}</li>)}
-                </ul>
-            }
-            { actualPage.type === 'text' &&
+            {!!actualPage &&
                 <div>
-                    { (actualPage as PrezPageText).text.map((item) => <p>{item}</p>)}
+                    {actualPage.type === 'list' &&
+                        <ul>
+                            {(actualPage as PrezPageList).items.map((item) => <li>{item}</li>)}
+                        </ul>
+                    }
+                    {actualPage.type === 'text' &&
+                        <div>
+                            {(actualPage as PrezPageText).text.map((item) => <p>{item}</p>)}
+                        </div>
+                    }
                 </div>
             }
             <p>{controls.actual + 1} / {presentation.pages.length}</p>

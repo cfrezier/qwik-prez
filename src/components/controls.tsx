@@ -11,7 +11,7 @@ import {
     useOnDocument,
     useStore
 } from "@builder.io/qwik";
-import {PrezPagesContext} from "~/routes/[prezId]/index";
+import {PrezPagesContext} from "~/components/data";
 
 export interface PrezControls {
     actual: number;
@@ -34,7 +34,6 @@ export default component$(() => {
 
     const pages = useContext(PrezPagesContext);
 
-
     useClientEffect$(() => {
         controls.bc = noSerialize(new BroadcastChannel('prez'));
 
@@ -52,7 +51,7 @@ export default component$(() => {
                     case 'playing':
                         // @ts-ignore
                         controls.playing = msg.data.value;
-                        if(!controls.playing) {
+                        if (!controls.playing) {
                             controls.interval && controls.interval();
                         }
                         break;

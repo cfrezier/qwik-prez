@@ -1,6 +1,6 @@
 import {component$, Resource} from '@builder.io/qwik';
 import type {DocumentHead, RequestHandler} from '@builder.io/qwik-city';
-import {useEndpoint} from '@builder.io/qwik-city';
+import {useEndpoint, useLocation} from '@builder.io/qwik-city';
 import fs from 'fs';
 
 export const onGet: RequestHandler<string[]> = async () => {
@@ -25,7 +25,8 @@ export default component$(() => {
                             {presentations.map((presentation) =>
                                 <li>
                                     <a href={'./' + presentation + '/'} className={'btn'}>{presentation}</a>
-                                    <a href={'./' + presentation + '/notes'} className={'btn'} target={'_blank'}>Notes</a>
+                                    <a href={'./' + presentation + '/notes'} className={'btn'}
+                                       target={'_blank'}>Notes</a>
                                 </li>)
                             }
                         </ul>
