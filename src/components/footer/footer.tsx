@@ -5,6 +5,7 @@ import {PrezControlsContext} from "~/components/controls/controls";
 import {PrezPagesContext} from "~/components/data";
 import styles from "./footer.scss?inline";
 import {useLocation} from "@builder.io/qwik-city";
+import Clock from "~/components/clock/clock";
 
 export default component$(() => {
     useStylesScoped$(styles);
@@ -23,9 +24,7 @@ export default component$(() => {
             {presentation.loaded &&
                 <p>{controls.actual + 1} / {presentation.pages.length}</p>
             }
-            {presentation.loaded && isNotes &&
-                <p>{controls.elapsed}s</p>
-            }
+            <Clock/>
         </footer>
     );
 });
