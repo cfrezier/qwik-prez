@@ -5,6 +5,7 @@ import Presentation from "~/components/presentation";
 import styles from "./notes.scss?inline";
 import {PrezPagesContext} from "~/components/data";
 import {PrezControlsContext} from "~/components/controls/controls";
+import Timeline from "~/components/timeline/timeline";
 
 export default component$(() => {
     useStylesScoped$(styles);
@@ -32,7 +33,9 @@ export default component$(() => {
                     <Presentation page={nextPage}></Presentation>
                 </div>
             </div>
-            <div className={'sub-tempo'}></div>
+            <div className={'sub-tempo'}>
+                <Timeline/>
+            </div>
         </div>
     );
 });
