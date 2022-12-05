@@ -8,7 +8,7 @@ import {
     useResource$,
     useStore
 } from "@builder.io/qwik";
-import {handleError, PrezPages} from "~/routes/[prezId]";
+import {PrezPages} from "~/routes/[prezId]";
 import {PrezPage} from "~/routes/model.prez.interface";
 import {useLocation} from "@builder.io/qwik-city";
 import {url} from "~/url.constant";
@@ -20,6 +20,14 @@ export interface PrezControls {
     bc?: NoSerialize<BroadcastChannel>;
     interval?: NoSerialize<() => void>;
 }
+
+export const handleError = function (err: any) {
+    console.warn(err);
+    return new Response(JSON.stringify({
+        code: 400,
+        message: 'Stupid network Error'
+    }));
+};
 
 export const PrezPagesContext = createContext<PrezPages>('prez-pages');
 

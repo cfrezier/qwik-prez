@@ -9,14 +9,6 @@ export interface PrezPages {
     durations: number[];
 }
 
-export const handleError = function (err: any) {
-    console.warn(err);
-    return new Response(JSON.stringify({
-        code: 400,
-        message: 'Stupid network Error'
-    }));
-};
-
 export default component$(() => {
     return (
         <Presentation></Presentation>
