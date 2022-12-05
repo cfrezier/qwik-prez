@@ -25,14 +25,25 @@ export default component$(() => {
         width: (controls.elapsed > plannedLength ? Math.round(100 * (controls.elapsed - plannedLength - 0.000001) / currentMax) : 0) + '%'
     }
 
-    console.log(elapsedWidth, notElapsedWidth, tooMuchElapsedWidth);
+    const durationsUntil = [presentation.durations[0]] as number[];
+    presentation.durations.reduce((a, b, i) => durationsUntil[i] = a + b);
+
+    const tracked = (duration: number, index: number) => {
+        return {
+            borderRight: controls.actual > index ? '2px solid green' :
+                controls.elapsed > durationsUntil[index] ? '2px solid red' : '2px solid grey',
+            width: Math.round(duration / currentMax * 100) + '%'
+        }
+    }
 
     return (
         <>
             <div class={'elapsed'} style={elapsedWidth}></div>
             <div class={'not-elapsed'} style={notElapsedWidth}></div>
             <div class={'too-much-elapsed'} style={tooMuchElapsedWidth}></div>
-            {}
+            {presentation.durations.map((duration, index) =>
+                <div className={'track'} style={tracked(duration, index)} title={index + 1 + ''}></div>
+            )}
         </>
     );
 });
