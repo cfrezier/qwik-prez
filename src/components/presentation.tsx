@@ -1,8 +1,9 @@
 import {component$, useClientEffect$, useContext, useStylesScoped$} from "@builder.io/qwik";
 import hljs from "highlight.js";
-import {PrezPage, PrezPageCode, PrezPageList, PrezPageText} from "~/routes/model.prez.interface";
+import {PrezPage, PrezPageCode, PrezPageList, PrezPageMeta, PrezPageText} from "~/routes/model.prez.interface";
 import {PrezControlsContext} from "~/components/controls/controls";
 import styles from "highlight.js/styles/github.css?inline";
+import Presentation from "~/components/presentation";
 
 export default component$((props: { page: PrezPage }) => {
     useStylesScoped$(styles);
@@ -40,6 +41,13 @@ export default component$((props: { page: PrezPage }) => {
                                         .replace(/>/g, '&gt;')}
                                 </code>
                             </pre>
+                        }
+                        {props.page.type === 'meta' &&
+                            <>
+                                {(props.page as PrezPageMeta).pages.map(page =>
+                                    <Presentation page={page}/>
+                                )}
+                            </>
                         }
                     </div>
                 </>
