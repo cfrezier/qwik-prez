@@ -15,7 +15,6 @@ export default component$(() => {
         const response = await res.json() as PrezPresentator;
         presentator.logo = response.logo;
         presentator.author = response.author;
-        console.log('received', presentator);
         return presentator;
     });
 
