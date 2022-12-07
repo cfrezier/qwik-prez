@@ -22,13 +22,13 @@ export default component$(() => {
                 <Notes></Notes>
             </div>
             <div className={'sub-current'}>
-                <h2>Current Slide</h2>
+                <p>Current Slide</p>
                 <div className={'current'}>
                     <Presentation page={actualPage}></Presentation>
                 </div>
             </div>
             <div className={'sub-next'}>
-                <h2>Next Slide</h2>
+                <p>Next Slide</p>
                 <div class={'next'}>
                     <Presentation page={nextPage}></Presentation>
                 </div>

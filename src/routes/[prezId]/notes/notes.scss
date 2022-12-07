@@ -1,6 +1,4 @@
 .main-note {
-  font-size: 14px;
-
   height: 100%;
   display: grid;
   grid-template-areas:
@@ -8,7 +6,7 @@
             "note next"
             "tempo tempo";
   grid-gap: 10px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 40% 1fr;
   grid-template-rows: auto auto;
 
   .sub-note {
