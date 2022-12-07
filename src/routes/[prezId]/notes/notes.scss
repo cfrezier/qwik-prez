@@ -40,3 +40,8 @@
     padding: 0;
   }
 }
+
+body, .body {
+  background-color: var(--color-background);
+  color: var(--color-writing);
+}

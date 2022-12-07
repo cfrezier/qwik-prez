@@ -1,4 +1,4 @@
-import {component$, useContext, useStylesScoped$} from "@builder.io/qwik";
+import {component$, useContext, useStyles$} from "@builder.io/qwik";
 import {DocumentHead} from "@builder.io/qwik-city";
 import Notes from "~/components/notes";
 import Presentation from "~/components/presentation/presentation";
@@ -8,7 +8,7 @@ import {PrezControlsContext} from "~/components/controls/controls";
 import Timeline from "~/components/timeline/timeline";
 
 export default component$(() => {
-    useStylesScoped$(styles);
+    useStyles$(styles);
 
     const presentation = useContext(PrezPagesContext);
     const controls = useContext(PrezControlsContext);

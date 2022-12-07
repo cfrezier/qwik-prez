@@ -24,8 +24,8 @@ html, body {
 }
 
 body, .body {
-  background-color: var(--color-background);
-  color: var(--color-writing);
+  background-size: cover;
+  background-repeat: no-repeat;
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   display: flex;
   flex-direction: column;

@@ -1,14 +1,14 @@
-import {component$, useClientEffect$, useContext, useStylesScoped$} from "@builder.io/qwik";
+import {component$, useClientEffect$, useContext, useStyles$, useStylesScoped$} from "@builder.io/qwik";
 import hljs from "highlight.js";
 import {PrezPage, PrezPageCode, PrezPageList, PrezPageMeta, PrezPageText} from "~/routes/model.prez.interface";
 import {PrezControlsContext} from "~/components/controls/controls";
-import styles from "highlight.js/styles/github.css?inline";
-import stylesPres from "./presentation.scss?inline";
+import hljsStyles from "highlight.js/styles/github.css?inline";
+import styles from "./presentation.scss?inline";
 import Presentation from "~/components/presentation/presentation";
 
-export default component$((props: { page: PrezPage }) => {
-    useStylesScoped$(styles);
-    useStylesScoped$(stylesPres);
+export default component$((props: { page: PrezPage, ignoreStyle?:boolean }) => {
+    useStylesScoped$(hljsStyles);
+    useStyles$(styles);
 
     const controls = useContext(PrezControlsContext);
 
@@ -23,16 +23,24 @@ export default component$((props: { page: PrezPage }) => {
         return <h1>No next page</h1>
     }
 
-    const pageStyle = {} as any;
-    if (props.page.background) {
-        pageStyle.backgroundImage = `url(${props.page.background})`;
-    }
-    if (props.page.color) {
-        pageStyle.color = `${props.page.color}`;
-    }
+    useClientEffect$(({track}) => {
+        track(() => props.page && props.page.background);
+        if (props.ignoreStyle !== true && props.page) {
+            if (props.page && props.page.background) {
+                document.body.style.backgroundImage = `url(${props.page.background})`;
+            } else {
+                document.body.style.backgroundImage = `none`;
+            }
+            if (props.page && props.page.color) {
+                document.body.style.color = `${props.page.color}`;
+            } else {
+                document.body.style.color = ``;
+            }
+        }
+    });
 
     return (
-        <div style={pageStyle} class={'prez'}>
+        <div class={'prez'}>
             <h1 className={props.page.type === 'head' ? 'big-head' : ''}>{props.page.title}</h1>
             <div className={'prez-text'}>
                 {props.page.type === 'list' &&
