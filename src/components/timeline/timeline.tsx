@@ -29,10 +29,11 @@ export default component$(() => {
     presentation.durations.reduce((a, b, i) => durationsUntil[i] = a + b);
 
     const tracked = (duration: number, index: number) => {
+        const roundFn = index === presentation.durations.length - 1 ? Math.floor : Math.round;
         return {
             borderRight: controls.actual > index ? '2px solid green' :
                 controls.elapsed > durationsUntil[index] ? '2px solid red' : '2px solid grey',
-            width: Math.round(duration / currentMax * 100) + '%'
+            width: roundFn(duration / currentMax * 100) + '%'
         }
     }
 
