@@ -23,6 +23,11 @@ html, body {
   box-sizing: border-box;
 }
 
+body {
+  background-color: var(--color-background);
+  color: var(--color-writing);
+}
+
 body, .body {
   background-size: cover;
   background-repeat: no-repeat;
@@ -59,4 +64,9 @@ a {
     background-color: var(--color-primary);
     border-radius: 4px;
   }
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
 }

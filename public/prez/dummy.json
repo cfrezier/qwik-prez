@@ -80,6 +80,12 @@
           ]
         }
       ]
+    },
+    {
+      "duration": 5,
+      "type": "html",
+      "title": "An html page",
+      "html": "<div class=\"row\">\n    <div style=\"flex: 1 1 250px\">\n        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\n        <p>can be on multiple lines</p>\n    </div>\n    <div style=\"flex: 2 2 500px\">\n        <pre>\n            <code class=\"hljs language-typescript\">\ncontrols.bc = noSerialize(new BroadcastChannel('prez'));\nif (controls.bc) {\n    controls.bc.onmessage = (msg) => {\n        switch (msg.data.type) {\n            case 'actual':\n                controls.actual = msg.data.value;\n                break;\n            </code>\n        </pre>\n        <div>\n            <img src=\"http://localhost:5173/images/1.jpeg\" style=\"max-width: 250px;max-height:250px\"/>\n        </div>\n    </div>\n</div>"
     }
   ]
 }

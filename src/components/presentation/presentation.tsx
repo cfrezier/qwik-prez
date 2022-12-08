@@ -1,12 +1,19 @@
-import {component$, useClientEffect$, useContext, useStyles$, useStylesScoped$} from "@builder.io/qwik";
+import {component$, useClientEffect$, useContext, useStore, useStyles$, useStylesScoped$} from "@builder.io/qwik";
 import hljs from "highlight.js";
-import {PrezPage, PrezPageCode, PrezPageList, PrezPageMeta, PrezPageText} from "~/routes/model.prez.interface";
+import {
+    PrezPage,
+    PrezPageCode,
+    PrezPageHtml,
+    PrezPageList,
+    PrezPageMeta,
+    PrezPageText
+} from "~/routes/model.prez.interface";
 import {PrezControlsContext} from "~/components/controls/controls";
 import hljsStyles from "highlight.js/styles/github.css?inline";
 import styles from "./presentation.scss?inline";
 import Presentation from "~/components/presentation/presentation";
 
-export default component$((props: { page: PrezPage, ignoreStyle?:boolean }) => {
+export default component$((props: { page: PrezPage, ignoreStyle?: boolean }) => {
     useStylesScoped$(hljsStyles);
     useStyles$(styles);
 
@@ -39,6 +46,20 @@ export default component$((props: { page: PrezPage, ignoreStyle?:boolean }) => {
         }
     });
 
+    const id = useStore({ id: Math.round(Math.random() * 10000000000000)});
+
+    useClientEffect$(({track}) => {
+        track(() => props.page && props.page.type);
+        if (props.page?.type === 'html') {
+            setTimeout(() => {
+                const target = document.querySelector(`.prez-${id.id}`);
+                if (target) {
+                    target.innerHTML = (props.page as PrezPageHtml).html;
+                }
+            }, 50);
+        }
+    });
+
     return (
         <div class={'prez'}>
             <h1 className={props.page.type === 'head' ? 'big-head' : ''}>{props.page.title}</h1>
@@ -65,9 +86,12 @@ export default component$((props: { page: PrezPage, ignoreStyle?:boolean }) => {
                 {props.page.type === 'meta' &&
                     <>
                         {(props.page as PrezPageMeta).pages.map(page =>
-                            <Presentation page={page}/>
+                            <Presentation page={page} ignoreStyle={true}/>
                         )}
                     </>
+                }
+                {props.page.type === 'html' &&
+                    <div class={`prez-${id.id}`}></div>
                 }
             </div>
         </div>
