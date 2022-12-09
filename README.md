@@ -1,3 +1,8 @@
+# Qwik Presentation tool
+
+This is a little presentation tool that I am writing in order to discover qwik - in progress
+
+
 # Qwik City App ⚡️
 
 - [Qwik Docs](https://qwik.builder.io/)
